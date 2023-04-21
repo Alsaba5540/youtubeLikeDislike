@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 mt-4 mb-4" *ngFor="let reel of reels">
+            <div class="card">
+                <div class="card-header">
+                    {{reel.title}}
+                </div>
+                <div class="card-body">
+                    <app-like2 [isLiked]="reel.isLike" (emmitLikeStatus)="getLikeStatus($event , reel.id)"></app-like2>
+                    <span class="ml-4">{{reel.likeCount}}</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<h1 class=" bg-primary  text-center  mb-4">Youtubers like or dislike</h1>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6 mb-4 " *ngFor="let youtubers of indianYouTubers">
+            <div class="card">
+                <div class="card-header">
+                  Name: {{youtubers.name}}
+                </div>
+                <div class="card-body">
+                    Subscribers:  {{youtubers.subscribers}}
+                </div>
+                <div class="card-footer " >
+                    <app-youtubelikedislike (isLiked)="youtubers.isLike"
+                    (emmitLikeStatus)="getLikeStatusOfYoutube($event , youtubers.id)"></app-youtubelikedislike>
+                     <span class="ml-4">{{youtubers.isLikeCount}}</span>
+
+                     <app-like3 (isLiked)="youtubers.isLike"
+                     (emmitLikeStatus)="getDisLikeStatusOfYoutube($event , youtubers.id)"></app-like3>
+                      <span class="ml-4">{{youtubers.isDislikeCount}} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
